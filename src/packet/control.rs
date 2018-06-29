@@ -1,5 +1,5 @@
 use bytes::{Buf, BufMut, Bytes};
-use failure::Error;
+use failure::{bail, format_err, Error};
 use std::net::{IpAddr, Ipv4Addr};
 
 use crate::{SeqNumber, SocketID};

@@ -1,5 +1,6 @@
 use std::{
-    net::SocketAddr, time::{Duration, Instant},
+    net::SocketAddr,
+    time::{Duration, Instant},
 };
 
 use crate::{SeqNumber, SocketID};

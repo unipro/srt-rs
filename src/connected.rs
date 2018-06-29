@@ -1,6 +1,5 @@
 use crate::{
-    CongestCtrl, ConnectionSettings, DefaultCongestCtrl, Packet,
-    receiver::Receiver, sender::Sender,
+    receiver::Receiver, sender::Sender, CongestCtrl, ConnectionSettings, DefaultCongestCtrl, Packet,
 };
 
 use failure::Error;

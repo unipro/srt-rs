@@ -1,16 +1,16 @@
 use crate::{
-     loss_compression::decompress_loss_list,
+    loss_compression::decompress_loss_list,
     packet::{ControlPacket, ControlTypes, DataPacket, Packet, PacketLocation},
-    srt_packet::{SrtControlPacket, SrtHandshake, SrtShakeFlags}, srt_version,
-     CCData, CongestCtrl,
-    ConnectionSettings, MsgNumber, SeqNumber, Stats,
+    srt_packet::{SrtControlPacket, SrtHandshake, SrtShakeFlags},
+    srt_version, CCData, CongestCtrl, ConnectionSettings, MsgNumber, SeqNumber, Stats,
 };
 
-use std::{collections::VecDeque, io::Cursor, net::SocketAddr, time::Duration};
 use bytes::{Bytes, BytesMut};
-use failure::Error;
-use futures::prelude::*;
+use failure::{bail, Error};
+use futures::{prelude::*, try_ready};
 use futures_timer::{Delay, Interval};
+use log::{debug, info, log, trace, warn};
+use std::{collections::VecDeque, io::Cursor, net::SocketAddr, time::Duration};
 
 pub struct Sender<T, CC> {
     sock: T,

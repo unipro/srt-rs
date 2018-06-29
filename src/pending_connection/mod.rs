@@ -3,7 +3,8 @@ pub mod listen;
 pub mod rendezvous;
 
 use std::{
-    net::{IpAddr, SocketAddr}, time::Instant,
+    net::{IpAddr, SocketAddr},
+    time::Instant,
 };
 
 use failure::Error;
@@ -12,7 +13,7 @@ use futures::prelude::*;
 pub use self::connect::Connect;
 pub use self::listen::Listen;
 pub use self::rendezvous::Rendezvous;
-pub use crate::{Packet, SocketID, connected::Connected};
+pub use crate::{connected::Connected, Packet, SocketID};
 
 pub enum PendingConnection<T> {
     Listen(Listen<T>),

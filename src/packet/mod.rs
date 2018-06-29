@@ -9,8 +9,10 @@ pub use self::control::{
 };
 pub use self::data::{DataPacket, PacketLocation};
 
+use failure::bail;
 use {
-    bytes::{Buf, BufMut}, failure::Error,
+    bytes::{Buf, BufMut},
+    failure::Error,
 };
 
 /// Represents A UDT/SRT packet

@@ -1,4 +1,4 @@
-use crate::{ CongestCtrl};
+use crate::CongestCtrl;
 use std::time::Duration;
 
 pub struct SrtCongestCtrl;

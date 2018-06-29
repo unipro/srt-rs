@@ -1,13 +1,19 @@
 use std::{
-    collections::hash_map::DefaultHasher, hash::{Hash, Hasher}, net::SocketAddr, time::Instant,
+    collections::hash_map::DefaultHasher,
+    hash::{Hash, Hasher},
+    net::SocketAddr,
+    time::Instant,
 };
 
-use failure::Error;
+use failure::{bail, Error};
 use futures::prelude::*;
 
-use crate::{connected::Connected,
-packet::{ConnectionType, ControlPacket, ControlTypes, Packet},
-ConnectionSettings, SocketID};
+use crate::{
+    connected::Connected,
+    packet::{ConnectionType, ControlPacket, ControlTypes, Packet},
+    ConnectionSettings, SocketID,
+};
+use log::{info, log, warn};
 
 pub struct Listen<T> {
     state: ConnectionState,

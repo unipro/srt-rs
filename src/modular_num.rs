@@ -2,16 +2,16 @@
 
 #[macro_export]
 macro_rules! modular_num {
-	(pub $x:ident($type:ident, $num:expr)) => {
-		modular_num_impls!($x, $type, $num);
+    (pub $x:ident($type:ident, $num:expr)) => {
+        modular_num_impls!($x, $type, $num);
 
-		pub use self::mod_num_impl::$x;
-	};
-	($x:ident($type:ident, $num:expr)) => {
-		modular_num_impls!($x, $type, $num);
+        pub use self::mod_num_impl::$x;
+    };
+    ($x:ident($type:ident, $num:expr)) => {
+        modular_num_impls!($x, $type, $num);
 
-		use self::mod_num_impl::$x;
-	};
+        use self::mod_num_impl::$x;
+    };
 }
 
 macro_rules! modular_num_impls {
@@ -136,49 +136,49 @@ macro_rules! modular_num_impls {
 #[cfg(test)]
 mod tests {
 
-	use std::cmp::Ordering;
+    use std::cmp::Ordering;
 
-	modular_num! { SeqNumber(u32, 31) }
+    modular_num! { SeqNumber(u32, 31) }
 
-	#[test]
-	fn new() {
-		// shouldn't be truncated, first bit is zero
-		assert_eq!(SeqNumber::new(1687761238).as_raw(), 1687761238);
-		assert_eq!(SeqNumber::new(1687761239 | 1 << 31).as_raw(), 1687761239);
-	}
+    #[test]
+    fn new() {
+        // shouldn't be truncated, first bit is zero
+        assert_eq!(SeqNumber::new(1687761238).as_raw(), 1687761238);
+        assert_eq!(SeqNumber::new(1687761239 | 1 << 31).as_raw(), 1687761239);
+    }
 
-	#[test]
-	fn max() {
-		assert_eq!(SeqNumber::MAX, 1 << 31);
-		assert_eq!(SeqNumber::MAX_DIFF, 1 << 30);
-	}
+    #[test]
+    fn max() {
+        assert_eq!(SeqNumber::MAX, 1 << 31);
+        assert_eq!(SeqNumber::MAX_DIFF, 1 << 30);
+    }
 
-	#[test]
-	fn mod_num_addition() {
-		assert_eq!(SeqNumber(14), SeqNumber(5) + 9);
-		assert_eq!(SeqNumber(SeqNumber::MAX - 1) + 4, SeqNumber(3));
-	}
+    #[test]
+    fn mod_num_addition() {
+        assert_eq!(SeqNumber(14), SeqNumber(5) + 9);
+        assert_eq!(SeqNumber(SeqNumber::MAX - 1) + 4, SeqNumber(3));
+    }
 
-	#[test]
-	fn mod_num_subtraction() {
-		assert_eq!(
-			SeqNumber(SeqNumber::MAX - 10) - (SeqNumber::MAX - 50),
-			SeqNumber(40)
-		);
-		assert_eq!(SeqNumber(4) - 10, SeqNumber(SeqNumber::MAX - 6));
-		assert_eq!(SeqNumber(5) - SeqNumber(1), 4);
-		assert_eq!(SeqNumber(2) - SeqNumber(SeqNumber::MAX - 1), 3);
-		assert_eq!(SeqNumber(5) - SeqNumber(5), 0);
-	}
+    #[test]
+    fn mod_num_subtraction() {
+        assert_eq!(
+            SeqNumber(SeqNumber::MAX - 10) - (SeqNumber::MAX - 50),
+            SeqNumber(40)
+        );
+        assert_eq!(SeqNumber(4) - 10, SeqNumber(SeqNumber::MAX - 6));
+        assert_eq!(SeqNumber(5) - SeqNumber(1), 4);
+        assert_eq!(SeqNumber(2) - SeqNumber(SeqNumber::MAX - 1), 3);
+        assert_eq!(SeqNumber(5) - SeqNumber(5), 0);
+    }
 
-	#[test]
-	fn mod_num_cmp() {
-		assert_eq!(SeqNumber(3), SeqNumber(3));
-		assert!(SeqNumber(3) < SeqNumber(4));
-		assert!(SeqNumber(13) > SeqNumber(5));
+    #[test]
+    fn mod_num_cmp() {
+        assert_eq!(SeqNumber(3), SeqNumber(3));
+        assert!(SeqNumber(3) < SeqNumber(4));
+        assert!(SeqNumber(13) > SeqNumber(5));
 
-		assert_eq!(SeqNumber(812827).cmp(&SeqNumber(812827)), Ordering::Equal);
-		assert_eq!(SeqNumber(812827), SeqNumber(812827));
-	}
+        assert_eq!(SeqNumber(812827).cmp(&SeqNumber(812827)), Ordering::Equal);
+        assert_eq!(SeqNumber(812827), SeqNumber(812827));
+    }
 
 }

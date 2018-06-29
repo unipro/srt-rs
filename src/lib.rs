@@ -1,24 +1,5 @@
 #![warn(rust_2018_idioms)]
-#![feature(rust_2018_preview)]
-
-extern crate bytes;
-#[macro_use]
-extern crate futures;
-#[macro_use]
-extern crate log;
-extern crate futures_timer;
-extern crate rand;
-extern crate serde;
-extern crate serde_json;
-extern crate tokio_core;
-extern crate tokio_io;
-extern crate tokio_udp;
-#[macro_use]
-extern crate serde_derive;
-#[macro_use]
-extern crate bitflags;
-#[macro_use]
-extern crate failure;
+#![feature(rust_2018_preview, use_extern_macros)]
 
 pub mod builder;
 pub mod codec;

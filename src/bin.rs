@@ -13,9 +13,14 @@ extern crate clap;
 extern crate failure;
 
 use {
-    bytes::Bytes, failure::Error, futures::{future, prelude::*},
-    srt::{ConnInitMethod, SrtSocketBuilder}, std::net::{IpAddr, Ipv4Addr, SocketAddr},
-    tokio_codec::BytesCodec, tokio_udp::{UdpFramed, UdpSocket}, url::{Host, Url},
+    bytes::Bytes,
+    failure::Error,
+    futures::{future, prelude::*},
+    srt::{ConnInitMethod, SrtSocketBuilder},
+    std::net::{IpAddr, Ipv4Addr, SocketAddr},
+    tokio_codec::BytesCodec,
+    tokio_udp::{UdpFramed, UdpSocket},
+    url::{Host, Url},
 };
 
 fn main() {

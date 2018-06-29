@@ -10,11 +10,18 @@ extern crate log;
 extern crate failure;
 
 use {
-    bytes::Bytes, failure::Error, futures::{prelude::*, stream::iter_ok, sync::mpsc},
-    futures_timer::{Delay, Interval}, rand::distributions::{Distribution, Normal},
+    bytes::Bytes,
+    failure::Error,
+    futures::{prelude::*, stream::iter_ok, sync::mpsc},
+    futures_timer::{Delay, Interval},
+    rand::distributions::{Distribution, Normal},
     srt::{ConnectionSettings, Receiver, Sender, SeqNumber, SocketID, SrtCongestCtrl},
     std::{
-        cmp::Ordering, collections::BinaryHeap, fmt::Debug, str, thread, time::{Duration, Instant},
+        cmp::Ordering,
+        collections::BinaryHeap,
+        fmt::Debug,
+        str, thread,
+        time::{Duration, Instant},
     },
 };
 

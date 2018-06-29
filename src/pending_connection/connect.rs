@@ -1,20 +1,22 @@
 use std::{
-    net::{IpAddr, SocketAddr}, time::{Duration, Instant},
+    net::{IpAddr, SocketAddr},
+    time::{Duration, Instant},
 };
 
 use failure::Error;
-use futures::prelude::*;
+use futures::{prelude::*, try_ready};
 use futures_timer::Interval;
 
 use rand::{thread_rng, Rng};
 
-use crate::{connected::Connected, packet::{
-    ConnectionType, ControlPacket, ControlTypes, HandshakeControlInfo, Packet, SocketType,
-}, 
-ConnectionSettings,
-SeqNumber,
-SocketID,
+use crate::{
+    connected::Connected,
+    packet::{
+        ConnectionType, ControlPacket, ControlTypes, HandshakeControlInfo, Packet, SocketType,
+    },
+    ConnectionSettings, SeqNumber, SocketID,
 };
+use log::{info, log};
 
 pub struct Connect<T> {
     remote: SocketAddr,

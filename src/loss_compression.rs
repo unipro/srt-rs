@@ -1,4 +1,4 @@
-use crate::{SeqNumber};
+use crate::SeqNumber;
 use std::iter::Iterator;
 
 /// Iterator for compressing loss lists

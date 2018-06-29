@@ -1,15 +1,18 @@
 use bytes::{Bytes, BytesMut};
-use failure::Error;
+use failure::{bail, Error};
 use futures::prelude::*;
 use futures_timer::{Delay, Interval};
 
 use crate::{
     loss_compression::compress_loss_list,
-    packet::{ControlPacket, ControlTypes, DataPacket, Packet}, recv_buffer::RecvBuffer,
-    seq_number::seq_num_range, srt_packet::{SrtControlPacket, SrtHandshake, SrtShakeFlags},
+    packet::{ControlPacket, ControlTypes, DataPacket, Packet},
+    recv_buffer::RecvBuffer,
+    seq_number::seq_num_range,
+    srt_packet::{SrtControlPacket, SrtHandshake, SrtShakeFlags},
     srt_version, ConnectionSettings, SeqNumber,
 };
 
+use log::{debug, info, log, trace, warn};
 use std::{cmp, io::Cursor, iter::Iterator, net::SocketAddr, time::Duration};
 
 struct LossListEntry {

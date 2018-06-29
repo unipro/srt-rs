@@ -1,3 +1,5 @@
+use serde_derive::{Deserialize, Serialize};
+
 /// Statistics that SRT can capture on
 #[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Stats {

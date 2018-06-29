@@ -1,16 +1,15 @@
 use crate::Sender;
 
-use crate::{
-CongestCtrl,
-    Packet,
-};
-use     bytes::Bytes;
+use bytes::Bytes;
+use crate::{CongestCtrl, Packet};
 use failure::Error;
 use futures::prelude::*;
 use serde_json;
 use std::{
-        net::SocketAddr, ops::{Deref, DerefMut}, time::Duration,
-    }; 
+    net::SocketAddr,
+    ops::{Deref, DerefMut},
+    time::Duration,
+};
 
 pub struct StatsPrinterSender<T, CC> {
     sender: Sender<T, CC>,
