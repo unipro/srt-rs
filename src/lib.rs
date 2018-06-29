@@ -1,4 +1,5 @@
 #![warn(rust_2018_idioms)]
+#![feature(rust_2018_preview)]
 
 extern crate bytes;
 #[macro_use]
