@@ -1,3 +1,6 @@
+#![feature(rust_2018_preview)]
+#![warn(rust_2018_idioms)]
+
 extern crate bytes;
 #[macro_use]
 extern crate futures;

@@ -1,4 +1,7 @@
+cargo-features = ["edition"]
+
 [package]
+edition = "2018"
 name = "srt-transport"
 version = "0.2.1"
 authors = ["Russell Greene <russellgreene8@gmail.com>"]
