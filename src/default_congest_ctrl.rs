@@ -1,9 +1,12 @@
-use {
-    rand::{
-        self, distributions::{Distribution, Normal},
-    }, std::mem,
-    std::time::Duration, CCData, CongestCtrl, SeqNumber,
+use crate::{
+    CCData, CongestCtrl, SeqNumber,
 };
+
+use rand::{
+        self, distributions::{Distribution, Normal},
+    };
+use std::{mem,
+    time::Duration};
 
 pub struct DefaultCongestCtrl {
     phase: Phase,

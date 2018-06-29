@@ -1,4 +1,6 @@
-use {std::time::Duration, SeqNumber};
+use crate::SeqNumber;
+
+use std::time::Duration;
 
 /// Congestion control trait, sender side
 ///

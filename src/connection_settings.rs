@@ -2,7 +2,7 @@ use std::{
     net::SocketAddr, time::{Duration, Instant},
 };
 
-use {SeqNumber, SocketID};
+use crate::{SeqNumber, SocketID};
 
 #[derive(Clone, Copy)]
 pub struct ConnectionSettings {

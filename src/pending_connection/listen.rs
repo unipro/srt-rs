@@ -5,9 +5,9 @@ use std::{
 use failure::Error;
 use futures::prelude::*;
 
-use connected::Connected;
-use packet::{ConnectionType, ControlPacket, ControlTypes, Packet};
-use {ConnectionSettings, SocketID};
+use crate::{connected::Connected,
+packet::{ConnectionType, ControlPacket, ControlTypes, Packet},
+ConnectionSettings, SocketID};
 
 pub struct Listen<T> {
     state: ConnectionState,

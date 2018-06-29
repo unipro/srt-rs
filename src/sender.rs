@@ -1,11 +1,16 @@
-use {
-    bytes::{Bytes, BytesMut}, failure::Error, futures::prelude::*,
-    futures_timer::{Delay, Interval}, loss_compression::decompress_loss_list,
+use crate::{
+     loss_compression::decompress_loss_list,
     packet::{ControlPacket, ControlTypes, DataPacket, Packet, PacketLocation},
     srt_packet::{SrtControlPacket, SrtHandshake, SrtShakeFlags}, srt_version,
-    std::{collections::VecDeque, io::Cursor, net::SocketAddr, time::Duration}, CCData, CongestCtrl,
+     CCData, CongestCtrl,
     ConnectionSettings, MsgNumber, SeqNumber, Stats,
 };
+
+use std::{collections::VecDeque, io::Cursor, net::SocketAddr, time::Duration};
+use bytes::{Bytes, BytesMut};
+use failure::Error;
+use futures::prelude::*;
+use futures_timer::{Delay, Interval};
 
 pub struct Sender<T, CC> {
     sock: T,

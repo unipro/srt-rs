@@ -3,7 +3,7 @@ use std::{
     io::{Error, ErrorKind, Result}, time::Duration,
 };
 
-use SrtVersion;
+use crate::SrtVersion;
 
 /// The SRT-specific control packets
 /// These are `Packet::Custom` types

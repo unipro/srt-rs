@@ -1,8 +1,7 @@
 use bytes::{Bytes, BytesMut};
 use std::{collections::VecDeque, fmt};
 
-use packet::PacketLocation;
-use {DataPacket, SeqNumber};
+use crate::{packet::PacketLocation, DataPacket, SeqNumber};
 
 pub struct RecvBuffer {
     // stores the incoming packets as they arrive

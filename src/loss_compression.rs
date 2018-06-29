@@ -1,4 +1,5 @@
-use {std::iter::Iterator, SeqNumber};
+use crate::{SeqNumber};
+use std::iter::Iterator;
 
 /// Iterator for compressing loss lists
 pub struct CompressLossList<I> {

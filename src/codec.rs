@@ -1,6 +1,9 @@
-use {
-    bytes::BytesMut, failure::Error, std::io::Cursor, tokio_io::codec::{Decoder, Encoder}, Packet,
-};
+use crate::Packet;
+
+use bytes::BytesMut;
+use failure::Error;
+use std::io::Cursor;
+use tokio_io::codec::{Decoder, Encoder};
 
 pub struct PacketCodec {}
 

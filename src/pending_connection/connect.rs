@@ -8,13 +8,13 @@ use futures_timer::Interval;
 
 use rand::{thread_rng, Rng};
 
-use connected::Connected;
-use packet::{
+use crate::{connected::Connected, packet::{
     ConnectionType, ControlPacket, ControlTypes, HandshakeControlInfo, Packet, SocketType,
+}, 
+ConnectionSettings,
+SeqNumber,
+SocketID,
 };
-use ConnectionSettings;
-use SeqNumber;
-use SocketID;
 
 pub struct Connect<T> {
     remote: SocketAddr,

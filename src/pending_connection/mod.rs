@@ -9,12 +9,10 @@ use std::{
 use failure::Error;
 use futures::prelude::*;
 
-use connected::Connected;
-
 pub use self::connect::Connect;
 pub use self::listen::Listen;
 pub use self::rendezvous::Rendezvous;
-pub use {Packet, SocketID};
+pub use crate::{Packet, SocketID, connected::Connected};
 
 pub enum PendingConnection<T> {
     Listen(Listen<T>),

@@ -2,7 +2,7 @@ use bytes::{Buf, BufMut, Bytes};
 use failure::Error;
 use std::net::{IpAddr, Ipv4Addr};
 
-use {SeqNumber, SocketID};
+use crate::{SeqNumber, SocketID};
 
 /// A UDP packet carrying control information
 ///  0                   1                   2                   3
