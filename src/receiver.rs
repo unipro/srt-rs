@@ -386,10 +386,10 @@ where
     // handles an incomming a packet
     fn handle_packet(&mut self, packet: &Packet, from: &SocketAddr) -> Result<(), Error> {
         // We don't care about packets from elsewhere
-        if *from != self.settings.remote {
-            info!("Packet received from unknown address: {:?}", from);
-            return Ok(());
-        }
+        // if *from != self.settings.remote {
+        //     info!("Packet received from unknown address: {:?}", from);
+        //     return Ok(());
+        // }
 
         if self.settings.local_sockid != packet.dest_sockid() {
             // packet isn't applicable
